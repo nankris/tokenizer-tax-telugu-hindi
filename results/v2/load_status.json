@@ -1,0 +1,15 @@
+{
+ "o200k_base": "ok 2.6s vocab=200019",
+ "cl100k_base": "ok 2.0s vocab=100277",
+ "Qwen3-1.7B": "ok(cached)",
+ "Gemma-3-1B": "ok(cached)",
+ "Gemma-2-2B": "ok(cached)",
+ "Llama-3.2-1B": "ok(cached)",
+ "Mistral-Nemo (Tekken)": "ok(cached)",
+ "DeepSeek-V3": "ok(cached)",
+ "gpt-oss (o200k_harmony)": "ok(cached)",
+ "Phi-4-mini": "ok(cached)",
+ "Sarvam-1": "ok(cached)",
+ "SmolLM3-3B": "ok(cached)",
+ "Granite-3.3-2B": "ok(cached)"
+}

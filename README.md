@@ -58,3 +58,15 @@ $PY scripts/03_analyze.py         # bootstrap CIs -> results/*.json + chart.png
 - Model *weights* were never downloaded — only tokenizer files (few MB each), so every
   tokenizer is exactly the vocabulary its real model uses.
 - Versions: `torch 2.14.1+cpu`, `transformers 5.19.0`, `datasets 5.1.0`, `tiktoken 0.14.0`.
+
+## 119b strengthening: pre-registered 21 Oct 2026 21:55 IST, before any 119b count
+**Why.** The 21 Oct review found three weaknesses in v1. (1) "PROVEN 4/6" counts one tokenizer twice: Llama-3.2 and cl100k give identical Telugu counts. (2) The 4.9× headline is the median of a bimodal set ({1.75, 1.90, 2.83} vs {6.9, 8.2, 8.2}), so it describes no real tokenizer. (3) There are only 200 sentences, from one source, and no newer or Indic-focused tokenizers.
+**Design.**
+- Fresh text: FLORES-200 **dev** (997 sentences) plus **devtest rows 200-1011** (812). That is 1,809 parallel sentences, none of them used in v1. Languages: eng, tel, hin (primary). tam, kan, mal, ben, mar are descriptive extras.
+- Tokenizers: the v1 six plus every newer one I can load without a token. Candidates: Mistral Tekken (Mistral-Nemo), DeepSeek-V3, gpt-oss (o200k_harmony), Phi-4-mini, Sarvam-1 (Indic-focused), SmolLM3, and IBM Granite-3.3. **Deduplication rule:** two tokenizers whose Telugu token counts are identical on all 1,809 sentences count as one "distinct tokenizer" for the vote (the first-listed name is kept). The one that loaded is recorded, and the ones that failed are listed.
+- Statistic: R_tel = mean Telugu tokens / mean English tokens per tokenizer, with a paired bootstrap over sentences (10,000 draws, seed 1192).
+- **H1 (replication of the split):** each v1 tokenizer stays on the same side of 2.0, with its 95% CI excluding 2.0. o200k and Gemma-3 stay below 2.0. cl100k, Qwen3, Gemma-2 and Llama-3.2 stay above. PROVEN if 6/6 hold; DISPROVEN if 2 or more flip side; INCONCLUSIVE otherwise.
+- **H2 (the original claim, fixed):** "Telugu costs ≥ 2× English on most *distinct* tokenizers." PROVEN if more than half of the distinct tokenizers have CI_low > 2.0. DISPROVEN if more than half have CI_high < 2.0. INCONCLUSIVE otherwise.
+- Prediction, written now: H1 PROVEN. H2 INCONCLUSIVE or narrowly PROVEN. Indic-focused (Sarvam) and ≥200k-vocab tokenizers (o200k, Gemma-3) come in under 2×, and legacy 100-150k vocabularies come in over 5×.
+- Headline will be the **range and the two clusters**, not the median.
+- Outputs go in `results/v2/`. The v1 files are untouched.
