@@ -1,0 +1,167 @@
+{
+  "n_sentences": 200,
+  "n_bootstrap": 10000,
+  "seed": 12345,
+  "threshold": 2.0,
+  "tokenizers": {
+    "o200k_base": {
+      "tel": {
+        "ratio": 1.902193784277879,
+        "ci_low": 1.8551842532443161,
+        "ci_high": 1.9509320082934154,
+        "tokens_per_sentence": 52.025,
+        "eng_tokens_per_sentence": 27.35
+      },
+      "hin": {
+        "ratio": 1.5840950639853748,
+        "ci_low": 1.5492505515157953,
+        "ci_high": 1.6187807284978426,
+        "tokens_per_sentence": 43.325,
+        "eng_tokens_per_sentence": 27.35
+      },
+      "code": {
+        "ratio": 6.078427787934186,
+        "ci_low": 5.514068104791709,
+        "ci_high": 6.7037343683556365,
+        "tokens_per_sentence": 166.245
+      }
+    },
+    "cl100k_base": {
+      "tel": {
+        "ratio": 8.21692642261689,
+        "ci_low": 7.985472412600766,
+        "ci_high": 8.449617936409318,
+        "tokens_per_sentence": 226.705,
+        "eng_tokens_per_sentence": 27.59
+      },
+      "hin": {
+        "ratio": 4.724537876042044,
+        "ci_low": 4.608860691947098,
+        "ci_high": 4.840779990383538,
+        "tokens_per_sentence": 130.35,
+        "eng_tokens_per_sentence": 27.59
+      },
+      "code": {
+        "ratio": 6.017035157665821,
+        "ci_low": 5.454464660129355,
+        "ci_high": 6.632682349192849,
+        "tokens_per_sentence": 166.01
+      }
+    },
+    "Qwen3-1.7B": {
+      "tel": {
+        "ratio": 6.900053069166814,
+        "ci_low": 6.681902448415906,
+        "ci_high": 7.1143839832757445,
+        "tokens_per_sentence": 195.03,
+        "eng_tokens_per_sentence": 28.265
+      },
+      "hin": {
+        "ratio": 4.349902706527508,
+        "ci_low": 4.228698620700715,
+        "ci_high": 4.469331481793457,
+        "tokens_per_sentence": 122.95,
+        "eng_tokens_per_sentence": 28.265
+      },
+      "code": {
+        "ratio": 5.962674686007429,
+        "ci_low": 5.405755719199316,
+        "ci_high": 6.574375627400082,
+        "tokens_per_sentence": 168.535
+      }
+    },
+    "Gemma-3-1B": {
+      "tel": {
+        "ratio": 1.745753620597175,
+        "ci_low": 1.7022169497472632,
+        "ci_high": 1.7906688046700443,
+        "tokens_per_sentence": 48.82,
+        "eng_tokens_per_sentence": 27.965
+      },
+      "hin": {
+        "ratio": 1.3141426783479349,
+        "ci_low": 1.2878871394025522,
+        "ci_high": 1.339633200152853,
+        "tokens_per_sentence": 36.75,
+        "eng_tokens_per_sentence": 27.965
+      },
+      "code": {
+        "ratio": 6.833363132487038,
+        "ci_low": 6.203482302526402,
+        "ci_high": 7.526565737600635,
+        "tokens_per_sentence": 191.095
+      }
+    },
+    "Gemma-2-2B": {
+      "tel": {
+        "ratio": 2.8322847384504763,
+        "ci_low": 2.756515217803929,
+        "ci_high": 2.9099093399748903,
+        "tokens_per_sentence": 78.78,
+        "eng_tokens_per_sentence": 27.815
+      },
+      "hin": {
+        "ratio": 1.88980765773863,
+        "ci_low": 1.846795449234899,
+        "ci_high": 1.9322434549051914,
+        "tokens_per_sentence": 52.565,
+        "eng_tokens_per_sentence": 27.815
+      },
+      "code": {
+        "ratio": 6.824195577925579,
+        "ci_low": 6.192967363316994,
+        "ci_high": 7.511570015103594,
+        "tokens_per_sentence": 189.815
+      }
+    },
+    "Llama-3.2-1B": {
+      "tel": {
+        "ratio": 8.222705839680811,
+        "ci_low": 7.990629976367655,
+        "ci_high": 8.454874422986006,
+        "tokens_per_sentence": 226.7,
+        "eng_tokens_per_sentence": 27.57
+      },
+      "hin": {
+        "ratio": 2.538447587957925,
+        "ci_low": 2.4806912482774566,
+        "ci_high": 2.5976179686958716,
+        "tokens_per_sentence": 69.985,
+        "eng_tokens_per_sentence": 27.57
+      },
+      "code": {
+        "ratio": 6.020493289807763,
+        "ci_low": 5.458301508464679,
+        "ci_high": 6.6366701877934275,
+        "tokens_per_sentence": 165.985
+      }
+    },
+    "bytes_utf8": {
+      "tel": {
+        "ratio": 2.6670649738610903,
+        "ci_low": 2.614422451177946,
+        "ci_high": 2.7202665989592125,
+        "tokens_per_sentence": 357.12,
+        "eng_tokens_per_sentence": 133.9
+      },
+      "hin": {
+        "ratio": 2.5413741598207618,
+        "ci_low": 2.4966546785311867,
+        "ci_high": 2.586490343681528,
+        "tokens_per_sentence": 340.29,
+        "eng_tokens_per_sentence": 133.9
+      },
+      "code": {
+        "ratio": 4.259073935772965,
+        "ci_low": 3.845432783209022,
+        "ci_high": 4.718144538818367,
+        "tokens_per_sentence": 570.29
+      }
+    }
+  },
+  "verdict": "PROVEN",
+  "n_tokenizers_ci_above_2x_tel": 4,
+  "n_tokenizers_ci_below_2x_tel": 2,
+  "headline_median_ratio_tel": 4.866168903808646,
+  "headline_median_ratio_hin": 2.2141276228482774
+}
