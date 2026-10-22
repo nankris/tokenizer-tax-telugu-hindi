@@ -1,6 +1,6 @@
 # The tokenizer tax: Telugu and Hindi cost more tokens than English
 
-**Experiment 119 — concept: Tokenization.**
+**Concept: Tokenization.**
 Data: FLORES-200 `devtest`, first 200 sentence-aligned English/Telugu/Hindi triples
 (`facebookresearch/flores`, CC-BY-SA-4.0). CPU only, 0 CU.
 

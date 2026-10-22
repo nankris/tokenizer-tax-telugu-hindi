@@ -20,3 +20,6 @@ node_modules/
 *.tar.gz
 *.tgz
 /data/flores200.tar.gz
+
+# internal working notes (kept local, not published)
+_agent_logs/

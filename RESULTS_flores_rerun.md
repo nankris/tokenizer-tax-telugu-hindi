@@ -1,5 +1,5 @@
-# 119b results (run 21 Oct 2026 21:55-22:03 IST, pre-registered 21:55 IST in README.md)
-Data: 1,809 FLORES-200 parallel sentences (dev + devtest rows 200-1011), none used in v1. 13 tokenizers loaded and none failed (`results/v2/load_status.json`).
+# Follow-up re-test on fresh FLORES sentences: results (run 21 Oct 2026 21:55-22:03 IST, pre-registered 21:55 IST in the README)
+Data: 1,809 FLORES-200 parallel sentences (dev + devtest rows 200-1011), none used in the original run. 13 tokenizers loaded and none failed (`results/flores-rerun/load_status.json`).
 Statistic: mean target-language tokens ÷ mean English tokens, with a paired bootstrap over sentences (10,000 draws, seed 1192).
 
 | Tokenizer | Vocab | EN tok/sent | TE tok/sent | Telugu ÷ English [95% CI] | Hindi ÷ English |
@@ -15,10 +15,10 @@ Statistic: mean target-language tokens ÷ mean English tokens, with a paired boo
 | cl100k_base | 100,277 | 26.2 | 218.6 | 8.33 [8.25, 8.41] | 4.78 |
 | Llama-3.2 (= SmolLM3 on Telugu) | 128,256 | 26.2 | 218.6 | 8.33 [8.25, 8.41] | 2.53 |
 
-All seven Indic languages are in `results/v2/summary.md`. The figure is `figures/v2_tax_by_tokenizer.png`.
+All seven Indic languages are in `results/flores-rerun/summary.md`. The figure is `figures/flores_rerun_tax_by_tokenizer.png`.
 
 ## Verdicts (pre-registered rules)
-- **H1 (v1 split replicates): PROVEN, 6/6.** o200k and Gemma-3 stay below 2×, and cl100k, Qwen3, Gemma-2 and Llama-3.2 stay above, with every CI clear of 2.0. The v1 numbers moved by less than 0.15×.
+- **H1 (the original split replicates): PROVEN, 6/6.** o200k and Gemma-3 stay below 2×, and cl100k, Qwen3, Gemma-2 and Llama-3.2 stay above, with every CI clear of 2.0. The original numbers moved by less than 0.15×.
 - **H2 ("≥2× on most *distinct* tokenizers"): PROVEN, 7 of 10 distinct.** The dedupe rule (identical Telugu counts on all 1,809 sentences) merged gpt-oss and Phi-4-mini into o200k, and SmolLM3 into Llama-3.2. cl100k and Llama-3.2 differ on 9 of 1,809 Telugu sentences, so the rule kept them separate. *Sensitivity:* merging them too gives 6 of 9, which is still PROVEN. My prediction was "INCONCLUSIVE or narrowly PROVEN", so this came out stronger than I expected.
 - The ratio isn't propped up by a big English denominator: Sarvam-1 also has the lowest *absolute* Telugu count (35 tokens/sentence vs 219 for cl100k/Llama).
 - Vocab size alone doesn't explain it. Gemma-2 (256k) is at 2.88×, Sarvam-1 (68k, Indic-targeted) at 1.16×, and Granite (49k) at 4.99×. What matters is how much of the vocabulary was allocated to Indic scripts.

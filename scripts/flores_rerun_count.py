@@ -1,13 +1,13 @@
 #!/usr/bin/env python
-"""119b: fresh FLORES sentences (dev + devtest[200:]), more tokenizers, dedupe. Resumable per tokenizer."""
+"""Rerun on fresh FLORES sentences (dev + devtest[200:]), more tokenizers, dedupe. Resumable per tokenizer."""
 import json, os, sys, time, traceback
 ROOT=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-FD=os.path.join(ROOT,"data","flores200_dataset"); OUT=os.path.join(ROOT,"results","v2")
+FD=os.path.join(ROOT,"data","flores200_dataset"); OUT=os.path.join(ROOT,"results","flores-rerun")
 LANGS=["eng_Latn","tel_Telu","hin_Deva","tam_Taml","kan_Knda","mal_Mlym","ben_Beng","mar_Deva"]
 TOK=[("o200k_base","tiktoken","o200k_base"),("cl100k_base","tiktoken","cl100k_base"),
  ("Qwen3-1.7B","hf","Qwen/Qwen3-1.7B"),("Gemma-3-1B","hf","unsloth/gemma-3-1b-it"),
  ("Gemma-2-2B","hf","unsloth/gemma-2-2b"),("Llama-3.2-1B","hf","unsloth/Llama-3.2-1B"),
- # new in 119b
+ # added in the rerun
  ("Mistral-Nemo (Tekken)","hf","unsloth/Mistral-Nemo-Instruct-2407"),
  ("DeepSeek-V3","hf","deepseek-ai/DeepSeek-V3"),
  ("gpt-oss (o200k_harmony)","hf","openai/gpt-oss-20b"),

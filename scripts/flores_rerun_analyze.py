@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 import json, glob, os, numpy as np
-ROOT=os.path.dirname(os.path.dirname(os.path.abspath(__file__))); OUT=os.path.join(ROOT,"results","v2")
+ROOT=os.path.dirname(os.path.dirname(os.path.abspath(__file__))); OUT=os.path.join(ROOT,"results","flores-rerun")
 ORDER=["o200k_base","cl100k_base","Qwen3-1.7B","Gemma-3-1B","Gemma-2-2B","Llama-3.2-1B","Mistral-Nemo (Tekken)","DeepSeek-V3","gpt-oss (o200k_harmony)","Phi-4-mini","Sarvam-1","SmolLM3-3B","Granite-3.3-2B"]
-V1={"o200k_base":"below","cl100k_base":"above","Qwen3-1.7B":"above","Gemma-3-1B":"below","Gemma-2-2B":"above","Llama-3.2-1B":"above"}
+ORIGINAL_SIDE={"o200k_base":"below","cl100k_base":"above","Qwen3-1.7B":"above","Gemma-3-1B":"below","Gemma-2-2B":"above","Llama-3.2-1B":"above"}
 LANGS=["tel_Telu","hin_Deva","tam_Taml","kan_Knda","mal_Mlym","ben_Beng","mar_Deva"]
 data={}
 for f in glob.glob(OUT+"/counts_*.json"):
@@ -27,7 +27,7 @@ for r in rows:
     else: distinct.append(r)
 # H1
 h1=[]
-for n,side in V1.items():
+for n,side in ORIGINAL_SIDE.items():
     r=next((x for x in rows if x["tokenizer"]==n),None)
     if r is None: h1.append((n,side,"MISSING")); continue
     p,lo,hi=r["tel_Telu"]
@@ -58,4 +58,4 @@ ax.axvline(2,ls="--",c="k",lw=1); ax.set_yticks(y); ax.set_yticklabels([r["token
 for i,v in enumerate(p): ax.text(v+0.08,i,f"{v:.2f}×",va="center",fontsize=9)
 ax.set_xlabel("tokens per sentence ÷ English tokens (same meaning, FLORES-200, 1,809 fresh sentences)")
 ax.set_title("Telugu (bars) and Hindi (thin blue) token tax by tokenizer"); ax.legend(loc="lower right")
-plt.tight_layout(); os.makedirs(os.path.join(ROOT,"figures"),exist_ok=True); plt.savefig(os.path.join(ROOT,"figures","v2_tax_by_tokenizer.png"),dpi=150)
+plt.tight_layout(); os.makedirs(os.path.join(ROOT,"figures"),exist_ok=True); plt.savefig(os.path.join(ROOT,"figures","flores_rerun_tax_by_tokenizer.png"),dpi=150)
